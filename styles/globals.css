@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #0a0f1e;
+  --color-foreground: #e2e8f0;
+  --color-accent: #3b82f6;
+  --color-accent-light: #60a5fa;
+  --color-glass: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  --color-glass-hover: rgba(255, 255, 255, 0.1);
+  --color-muted: #94a3b8;
+  --color-card-shadow: rgba(0, 0, 0, 0.25);
+  --color-surface: rgba(255, 255, 255, 0.05);
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* Light mode overrides */
+[data-theme="light"] {
+  --color-background: #f8fafc;
+  --color-foreground: #0f172a;
+  --color-accent: #2563eb;
+  --color-accent-light: #3b82f6;
+  --color-glass: rgba(255, 255, 255, 0.7);
+  --color-glass-border: rgba(0, 0, 0, 0.1);
+  --color-glass-hover: rgba(255, 255, 255, 0.9);
+  --color-muted: #475569;
+  --color-card-shadow: rgba(0, 0, 0, 0.08);
+  --color-surface: rgba(0, 0, 0, 0.04);
+}
+
+/* Lenis handles smooth scroll — no browser scroll-behavior */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Smooth theme transitions for all elements */
+*, *::before, *::after {
+  transition-property: background-color, border-color, box-shadow;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 3px;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-accent);
+  color: white;
+}
+
+/* Scroll line animation for hero */
+@keyframes scrollLine {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+.scroll-line {
+  animation: scrollLine 2s ease-in-out infinite;
+}
+
+/* Floating particles */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-12px); }
+}
