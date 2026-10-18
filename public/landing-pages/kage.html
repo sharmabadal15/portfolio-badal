@@ -881,6 +881,60 @@ body[data-layout-footer="b"] .foot-base span:last-child{ text-align:right; }
   [data-rv]{ opacity:1 !important; transform:none !important; }
   .mask-line > span,.word{ opacity:1 !important; transform:none !important; }
 }
+
+/* ========================================= portfolio-specific mobile fixes */
+
+/* Keep skill descriptions visible on tablet — the original hid lesson
+   descriptions at 1080px, but for a portfolio the skill lists ARE the content */
+@media (max-width:1080px){
+  body[data-layout-curriculum="b"] .les p{ display:block; font-size:12px; line-height:1.5; color:#909b95; }
+  body[data-layout-curriculum="b"] .les{ gap:10px; }
+}
+
+/* Stats row: handle text-based stat values ("Sr. SWE I") gracefully */
+@media (max-width:820px){
+  .gate-stats div b{ font-size:clamp(16px,4.8vw,24px); word-break:keep-all; white-space:nowrap; }
+  .gate-stats div span{ font-size:9px; letter-spacing:.14em; }
+}
+
+/* Project card meta: tech stack text wraps cleanly on small screens */
+@media (max-width:560px){
+  .card-meta{ flex-direction:column; gap:4px; }
+  .card-meta span:last-child{ font-size:9px; }
+  .card-lab b{ font-size:clamp(12px,3.6vw,15px); }
+  .card-lab span{ font-size:9px; }
+  /* stats go to 2×2 grid on small phones */
+  .gate-stats{ display:grid !important; grid-template-columns:1fr 1fr; gap:16px !important; }
+  .gate-stats div{ text-align:center; }
+  /* hero headline scales down */
+  .h-hero{ font-size:clamp(22px,6.8vw,36px); }
+  /* footer base stacks */
+  .foot-base{ flex-direction:column; align-items:flex-start; gap:8px; }
+  /* skills section: keep descriptions, smaller text */
+  body[data-layout-curriculum="b"] .les{ padding:16px; min-height:auto !important; }
+  body[data-layout-curriculum="b"] .les h3{ font-size:clamp(14px,4.2vw,20px); }
+  body[data-layout-curriculum="b"] .les p{ font-size:11px; }
+  body[data-layout-curriculum="b"] .les .t{ font-size:10px; }
+  body[data-layout-curriculum="b"] .les .k{ font-size:10px; }
+  /* contact section scales */
+  .fin h2{ font-size:clamp(30px,9vw,60px) !important; }
+  .fin p{ font-size:clamp(12px,3.4vw,15px); }
+  .cta{ padding:14px 24px; font-size:10px; }
+  /* section head text doesn't overflow */
+  .sec-head{ flex-wrap:wrap; gap:8px; }
+  .sec-head .k{ font-size:9px; }
+}
+
+/* Extra-small phones (< 380px) */
+@media (max-width:380px){
+  .h-hero{ font-size:clamp(20px,6vw,28px); }
+  .gate-stats div b{ font-size:clamp(14px,4.2vw,20px); }
+  .chip .num{ font-size:clamp(18px,6vw,24px) !important; }
+  .chip b{ font-size:9px; }
+  .chip p{ font-size:9px; }
+  .nav .brand-tx b{ font-size:10px; }
+  .nav .brand-tx i{ font-size:7px; }
+}
 </style>
 </head>
 <body data-layout-hero="b" data-layout-story="b" data-layout-gallery="b"
